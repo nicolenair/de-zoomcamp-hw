@@ -8,7 +8,7 @@ Then in the container:
 pip --version
 ```
 
-The output is 
+The output is 25.3
 
 # Question 2
 postgres:5433
@@ -18,7 +18,7 @@ postgres:5433
 ```
 docker build -t taxi_ingest .
 docker-compose up
-docker run --rm --network homework_default taxi_ingest --host pgdatabase
+docker run --rm --network week-1_default taxi_ingest --host pgdatabase
 ```
 
 ```
@@ -37,7 +37,7 @@ SELECT lpep_pickup_datetime FROM green_taxi_data WHERE trip_distance = (SELECT M
 
 # Question 5
 ```
-SELECT z."Zone", SUM(total_amount) AS t FROM zones as z INNER JOIN green_taxi_data as g ON z."LocationID" = g."PULocationID" WHERE to_char(lpep_pickup_datetime, 'YYYY-MM') = '2025-11' GROUP BY z."Zone" ORDER BY t DESC;
+SELECT z."Zone", SUM(total_amount) AS t FROM zones as z INNER JOIN green_taxi_data as g ON z."LocationID" = g."PULocationID" WHERE to_char(lpep_pickup_datetime, 'YYYY-MM-DD') = '2025-11-18' GROUP BY z."Zone" ORDER BY t DESC LIMIT 1;
 ```
 
 East Harlem North
@@ -45,7 +45,7 @@ East Harlem North
 # Question 6
 ```
 SELECT z."Zone" FROM green_taxi_data as g INNER JOIN zones as z ON g."DOLocationID" = z."LocationID" WHERE tip_amount = 
-(SELECT MAX(tip_amount) FROM green_taxi_data as g INNER JOIN zones as z ON g."PULocationID" = z."LocationID" WHERE z."Zone" = 'East Harlem North');
+(SELECT MAX(tip_amount) FROM green_taxi_data as g INNER JOIN zones as z ON g."PULocationID" = z."LocationID" WHERE z."Zone" = 'East Harlem North' AND to_char(lpep_pickup_datetime, 'YYYY-MM') = '2025-11');
 ```
 
 Yorkville West
