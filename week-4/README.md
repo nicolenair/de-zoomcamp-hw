@@ -41,7 +41,7 @@ select sum(total_monthly_trips) from taxi_rides_ny.prod.fct_monthly_zone_revenue
 
 # Question 6
 
-1. wrote ingestion script in `ingest_fhv.py`
+1. modified the original ingestion script to create fhv ingestion script in `ingest_fhv.py`
 2. added stg_fhv_tripdata model.
 
 ```
