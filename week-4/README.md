@@ -1,3 +1,5 @@
+Note that setup made use of template dbt project https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/04-analytics-engineering/taxi_rides_ny
+
 # Question 1
 
 int_trips_unioned only
